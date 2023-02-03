@@ -30,7 +30,7 @@ jobs:
 
     - name: Generate release
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: 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
       run: npx semantic-release
       # env:
       #   GIT_AUTHOR_NAME: "GitHub Actions"
