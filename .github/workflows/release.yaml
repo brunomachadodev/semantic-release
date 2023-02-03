@@ -6,8 +6,7 @@ on:
   push:
     branches:
       - main
-env: 
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,5 +30,13 @@ jobs:
       run: npm ci
 
     - name: Generate release
-      if: success()
-      run: npx semantic-release
+      env:
+        GIT_AUTHOR_NAME: "GitHub Actions"
+        GIT_AUTHOR_EMAIL: "actions@github.com"
+        GIT_COMMITTER_NAME: "GitHub Actions"
+        GIT_COMMITTER_EMAIL: "actions@github.com"
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+        npx semantic-release
