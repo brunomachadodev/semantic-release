@@ -6,8 +6,8 @@ on:
   push:
     branches:
       - main
-# env: 
-#   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+env: 
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
@@ -16,9 +16,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-      # with:
-      #     ref: ${{ github.head_ref }}
-      #     token: ${{ env.GITHUB_TOKEN }}
+      with:
+          ref: ${{ github.head_ref }}
+          token: ${{ env.GITHUB_TOKEN }}
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
@@ -30,15 +30,12 @@ jobs:
 
     - name: Generate release
       env:
-        GITHUB_TOKEN: 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
-      run: npx semantic-release
-      # env:
-      #   GIT_AUTHOR_NAME: "GitHub Actions"
-      #   GIT_AUTHOR_EMAIL: "actions@github.com"
-      #   GIT_COMMITTER_NAME: "GitHub Actions"
-      #   GIT_COMMITTER_EMAIL: "actions@github.com"
-      #   GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
-      # run: |
-      #   git config --global user.email "actions@github.com"
-      #   git config --global user.name "GitHub Actions"
-      #   npx semantic-release
+        GIT_AUTHOR_NAME: "GitHub Actions"
+        GIT_AUTHOR_EMAIL: "actions@github.com"
+        GIT_COMMITTER_NAME: "GitHub Actions"
+        GIT_COMMITTER_EMAIL: "actions@github.com"
+        GH_TOKEN: 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
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+        npx semantic-release
