@@ -1,1 +1,3 @@
-function asd () {}
+function asd () {
+  // small fix
+}
