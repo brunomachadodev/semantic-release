@@ -1,11 +1,14 @@
 {
-  "branches": ["main"],
+  "branches": [
+    "main",
+    {"name": "alpha", "prerelease": true}
+  ],
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     "@semantic-release/github"
   ],
-  "tagFormat":"v${version}-beta",
+  "tagFormat":"v${version}",
   "preset": "angular",
   "prepare": [],
   "verifyConditions": []
