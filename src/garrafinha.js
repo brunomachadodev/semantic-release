@@ -4,4 +4,7 @@ class Garrafinha {
   setName(incomingName) {
     this.name = incomingName;
   }
+
+  dummyCode;
 }
+
